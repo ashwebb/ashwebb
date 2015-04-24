@@ -11,11 +11,27 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+Route::get('/', 'PagesController@about');
+Route::get('about', 'PagesController@about');
+Route::get('contact', 'PagesController@showContact');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+/*
+|--------------------------------------------------------------------------
+| Posts Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('posts', 'PostsController@index');
+Route::get('posts/{id}', 'PostsController@show');
+
+/*
+|--------------------------------------------------------------------------
+| Email Routes
+|--------------------------------------------------------------------------
+*/
+Route::post('email', 'EmailController@sendEmail');
