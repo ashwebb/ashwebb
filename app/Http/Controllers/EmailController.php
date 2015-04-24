@@ -111,7 +111,7 @@ class EmailController extends Controller {
 
 		Session::flash('success', 'Your email has been sent. Thanks for contacting me!');
 
-		return view('contact');
+		return Redirect('/contact');
 	}
 
 }

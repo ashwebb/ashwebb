@@ -18,7 +18,7 @@
     <hr>
     <p>{{ $post->body }}</p>
   </article>
-  <a href="/blog"><i class="fa fa-long-arrow-left"></i> back to blog</a>
+  <a href="/posts"><i class="fa fa-long-arrow-left"></i> back to blog</a>
 </div>
 
 {{-- Sidebar --}}
