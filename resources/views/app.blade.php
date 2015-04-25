@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>AshWebb</title>
     <meta name="viewport" content="width=device-width">
+    <link rel='shortcut icon' href='favicon.ico' type='image/x-icon'/ >
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/custom.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
