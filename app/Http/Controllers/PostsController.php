@@ -5,7 +5,9 @@ use App\User;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use Illuminate\Http\Request;
+use Request;
+use Session;
+use Auth;
 
 class PostsController extends Controller {
 
@@ -16,7 +18,7 @@ class PostsController extends Controller {
 	 */
 	public function index()
 	{
-		$posts = Post::where('publish', 1)->get();
+		$posts = Post::where('publish', Post::PUBLISHED)->orderBy('created_at', 'desc')->get();
 		$data = [
 			'posts' => $posts
 		];
@@ -31,7 +33,7 @@ class PostsController extends Controller {
 	 */
 	public function create()
 	{
-		//
+		return view('posts.create');
 	}
 
 	/**
@@ -39,9 +41,20 @@ class PostsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store(Request $request)
 	{
-		//
+		$input = Request::all();
+
+		$post = new Post;
+		$post->user_id = Auth::id();
+		$post->title = $input['title'];
+		$post->body = $input['body'];
+		$post->publish = $input['publish'];
+		$post->save();
+
+		Session::flash('success', "New post: '$post->title' created!");
+
+		return redirect("posts/$post->id");
 	}
 
 	/**
@@ -95,5 +108,4 @@ class PostsController extends Controller {
 	{
 		//
 	}
-
 }

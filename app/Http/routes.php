@@ -11,14 +11,21 @@
 |
 */
 
+/*
+|--------------------------------------------------------------------------
+| Protected Routes
+|--------------------------------------------------------------------------
+*/
+Route::get('posts/create', ['middleware' => 'auth', 'uses' => 'PostsController@create']);
+Route::post('posts/create', ['middleware' => 'auth', 'uses' => 'PostsController@store']);
 
 Route::get('/', 'PagesController@about');
 Route::get('about', 'PagesController@about');
 Route::get('contact', 'PagesController@showContact');
 
 Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
+  'auth' => 'Auth\AuthController',
+  'password' => 'Auth\PasswordController',
 ]);
 
 /*
@@ -35,3 +42,4 @@ Route::get('posts/{id}', 'PostsController@show');
 |--------------------------------------------------------------------------
 */
 Route::post('email', 'EmailController@sendEmail');
+
