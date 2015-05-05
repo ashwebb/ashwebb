@@ -39,6 +39,16 @@
           <li><a href="/about">About Me</a></li>
           <li><a href="/posts">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
+          @if (Auth::check())
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/posts/create">New Post</a></li>
+                <li class="divider"></li>
+                <li><a href="{{{Auth::logout()}}}">Logout</a></li>
+              </ul>
+            </li>
+          @endif
         </ul>
       </div>
     </div>
